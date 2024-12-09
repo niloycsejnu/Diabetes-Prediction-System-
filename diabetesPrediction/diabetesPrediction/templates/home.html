@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('static/images/02.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            color: white;
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            padding: 10px;
+            margin-top: 15px;
+            margin-left: 10px;
+            border-radius: 10px;
+        }
+        .form-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+        form h1{
+          font-size: 30px;
+          font-weight: 700;
+          display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            color: rgb(37, 123, 166);
+          
+        }
+        form label{
+          font-weight: 700;
+        }
+        .btn{
+          background-color:rgb(37, 123, 166);
+          color: whitesmoke;
+          font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<header class="gradient-bg">
+    <h1 class="text-3xl font-bold">Diabetes Prediction Tool</h1>
+</header>
+
+<div class="form-container">
+  <form class="mb-4 p-4" action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    <div>
+      <h1>Enter Your Data</h1>
+      <label class="form-label">Pregnancies</label>
+      <input type="text" class="form-control" name="Pregnancies" required>
+    </div>
+    <div>
+      <label class="form-label">Glucose</label>
+      <input type="text" class="form-control" name="Glucose" required>
+    </div>
+    <div>
+      <label class="form-label">Blood Pressure</label>
+      <input type="text" class="form-control" name="BloodPressure" required>
+    </div>
+    <div>
+      <label class="form-label">Skin Thickness</label>
+      <input type="text" class="form-control" name="SkinThickness" required>
+    </div>
+    <div>
+      <label class="form-label">Insulin</label>
+      <input type="text" class="form-control" name="Insulin" required>
+    </div>
+    <div>
+      <label class="form-label">BMI</label>
+      <input type="text" class="form-control" name="BMI" required>
+    </div>
+    <div>
+      <label class="form-label">Diabetes Pedigree Function</label>
+      <input type="text" class="form-control" name="DiabetesPedigreeFunction" required>
+    </div>
+    <div>
+      <label class="form-label">Age</label>
+      <input type="text" class="form-control" name="Age" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2 mb-1">Submit</button>
+    {% if result_message %}
+      <p>{{ result_message }}</p>
+    {% endif %}
+  </form>
+</div>
+<footer class="mt-12 py-6 text-center text-gray-600">
+  <p>&copy; Developed by Runtime_Terr0r || CSE-JNU</p>
+</footer>
+
+</body>
+</html>
